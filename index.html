@@ -454,66 +454,90 @@
 	
    <!-- contact
    ================================================== -->
-	<section id="contact">
+   <section id="contact">
+    <div class="row section-intro">
+        <div class="col-twelve">
+            <h5>Contactame</h5>
+            <h1>Encantado de trabajar contigo.</h1>
+            <p class="lead">Me entusiasma la idea de trabajar con personas y establecer conexiones significativas a través de mi trabajo. Creo firmemente en la importancia de la comunicación efectiva y la colaboración en equipo para alcanzar objetivos comunes.</p>
+        </div> 
+    </div> <!-- /section-intro -->
 
-		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Contactame</h5>
-   			<h1>Encantado de trabajar contigo.</h1>
-
-   			<p class="lead">Me entusiasma la idea de trabajar con personas y establecer conexiones significativas a través de mi trabajo. Creo firmemente en la importancia de la comunicación efectiva y la colaboración en equipo para alcanzar objetivos comunes.</p>
-
-   		</div> 
-   	</div> <!-- /section-intro -->
-
-   	<div class="row contact-form">
-
-   		<div class="col-twelve">
-
+    <div class="row contact-form">
+        <div class="col-twelve">
             <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="https://samuelbarb0.github.io/inc/sendEmail.php">
-      			<fieldset>
-
-                  <div class="form-field">
- 						   <input name="contactName" type="text" id="contactName" placeholder="Nombre" value="" minlength="2" required="">
-                  </div>
-                  <div class="form-field">
-	      			   <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
-	               </div>
-                  <div class="form-field">
-	     				   <input name="contactSubject" type="text" id="contactSubject" placeholder="Sujeto" value="">
-	               </div>                       
-                  <div class="form-field">
-	                 	<textarea name="contactMessage" id="contactMessage" placeholder="Mensaje" rows="10" cols="50" required=""></textarea>
-	               </div>                      
-                 <div class="form-field">
-                     <button class="submitform">Enviar</button>
-                     <div id="submit-loader">
-                        <div class="text-loader">Enviando...</div>                             
-       				      <div class="s-loader">
-								  	<div class="bounce1"></div>
-								  	<div class="bounce2"></div>
-								  	<div class="bounce3"></div>
-								</div>
-							</div>
-                  </div>
-
-      			</fieldset>
-      		</form> <!-- Form End -->
+            <form id="contactForm" method="POST" action="https://formspree.io/f/xpzvvera">
+                <fieldset>
+                    <div class="form-field">
+                        <input name="name" type="text" id="contactName" placeholder="Nombre" minlength="2" required>
+                    </div>
+                    <div class="form-field">
+                        <input name="email" type="email" id="contactEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-field">
+                        <input name="subject" type="text" id="contactSubject" placeholder="Sujeto">
+                    </div>
+                    <div class="form-field">
+                        <textarea name="message" id="contactMessage" placeholder="Mensaje" rows="10" cols="50" required></textarea>
+                    </div>
+                    <div class="form-field">
+                        <button type="submit" class="submitform">Enviar</button>
+                        <div id="submit-loader" style="display:none;">
+                            <div class="text-loader">Enviando...</div>                             
+                            <div class="s-loader">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form> <!-- Form End -->
 
             <!-- contact-warning -->
-            <div id="message-warning">   
-				<i class="fa fa-check"></i>Hubo un error, vuelve a intentarlo!<br>         	
+            <div id="message-warning" style="display: none;">   
+                <i class="fa fa-check"></i>Hubo un error, vuelve a intentarlo!<br>          
             </div>            
             <!-- contact-success -->
-      		<div id="message-success">
-               <i class="fa fa-check"></i>Tu mensaje ha sido enviado, gracias!<br>
-      		</div>
+            <div id="message-success" style="display: none;">
+                <i class="fa fa-check"></i>Tu mensaje ha sido enviado, gracias!<br>
+            </div>
+        </div> <!-- /col-twelve -->
+    </div> <!-- /contact-form -->
+</section>
 
-         </div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /contact-form -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#contactForm').validate({
+        /* submit via ajax */
+        submitHandler: function(form) {
+            var sLoader = $('#submit-loader');
+            sLoader.fadeIn();
+
+            $.ajax({
+                type: form.method,
+                url: form.action,
+                data: $(form).serialize(),
+                dataType: "json",
+                success: function(response) {
+                    sLoader.fadeOut();
+                    $('#message-warning').hide();
+                    $('#contactForm').fadeOut();
+                    $('#message-success').fadeIn();
+                },
+                error: function() {
+                    sLoader.fadeOut();
+                    $('#message-warning').html("Hubo un error. Por favor, inténtalo de nuevo.").fadeIn();
+                }
+            });
+        }
+    });
+});
+</script>
+
 
    	<div class="row contact-info">
 
