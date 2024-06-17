@@ -90,7 +90,7 @@ a, a:visited {
 	transition: all 0.3s ease-in-out;
 }
 a:hover, a:focus, a:active {
-	color: #FF0077;
+	color: #2e8b57;
 	outline: 0;
 }
 
@@ -301,7 +301,7 @@ ul.disc li::before {
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	background: #FF0077;
+	background: #2e8b57;
 	position: absolute;
 	left: -17px;
 	top: 11px;
@@ -309,7 +309,7 @@ ul.disc li::before {
 }
 dt {
 	margin: 0;
-	color: #FF0077;
+	color: #2e8b57;
 }
 dd {
 	margin: 0 0 0 2rem;
@@ -594,8 +594,8 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-	color: #cc005f;
-	border-bottom: 1px solid #FF0077;
+	color: #2e8b57;
+	border-bottom: 1px solid #2e8b57;
 }
 label, legend {
 	font-family: "poppins-bold", sans-serif;
@@ -1415,7 +1415,7 @@ header .logo a {
 	color: #FFFFFF;
 }
 .intro-social li a:hover, .intro-social li a:focus {
-	color: #cc005f;
+	color: #9e0;
 }
 
 /**
@@ -1955,7 +1955,7 @@ header .logo a {
 	border-right: 1px solid rgba(200, 200, 200, 0.1);
 }
 .popup-modal .link-box a:hover {
-	background: #cc005f;
+	background: #9e0;
 	border: none;
 }
 @media only screen and (max-width:600px) {
@@ -2471,7 +2471,7 @@ footer a, footer a:visited {
 	color: #FFFFFF;
 }
 footer a:hover, footer a:focus {
-	color: #FF0077;
+	color: #9e0;
 }
 footer .row {
 	max-width: 900px;
